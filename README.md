@@ -7,11 +7,11 @@ This project is not yet completed . to be continued...!
   
   
   
-To run this project
-1.clone this project to your directory.
-2.install nodejs in your system(https://nodejs.org/en/)
-3.install vsCode(code editor i personally recommend).
-4. run node index.js
-5 open your chrome browser and type http://127.0.0.1:8000/ 
-6.now You had successfully run my project!!
+# To run this project 
+# 1.clone this project to your directory.
+# 2.install nodejs in your system(https://nodejs.org/en/)
+# 3.install vsCode(code editor i personally recommend).
+# 4. run node index.js
+# 5 open your chrome browser and type http://127.0.0.1:8000/ 
+# 6.now You had successfully run my project!!
 
