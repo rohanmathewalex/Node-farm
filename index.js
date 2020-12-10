@@ -55,6 +55,8 @@ const url = require('url');
 
   //-------------------------------SERVER----------------------------------------------------------------------
 //here we created a new server using http in server method it accept a callback req and a response
+
+//Replacetemplate function is used to replace the placeholder with the actual content
 const replaceTemplate = (temp,product) =>{
   console.log(product.productName);
   let output = temp.replace(/{%PRODUCTNAME%}/g,product.productName);
@@ -80,23 +82,35 @@ const dataObj = JSON.parse(data);
 
 
   const server =http.createServer((req,res) =>{
+    //Using destructuring we get query eg: product:Id and pathaname eg: /product
+    const {query,pathname} = url.parse(req.url,true);
     
-    const pathName = req.url;
-
     //overview
-    if(pathName ==='/' || pathName === '/overview'){
+    if(pathname ==='/' || pathname === '/overview'){
       res.writeHead(200,{'Content-type':'text/html'});
+      //here below we pass the template and product details to replacetemplate to replace the placeholder with actual data
       const cardsHtml = dataObj.map(el =>replaceTemplate(tempCard,el)).join('');
+      //Once the actual data is replaced with placehold then the data is should display in overview page
+      //cardsHtml have the data which replaced all placeholder
+      //the placeholder at overview page is replaced with actual data below
       const output = tempOverview.replace('{%PRODUCT_CARDS%}',cardsHtml);
-      console.log(output);
         return res.end(output);
 
         //Product
-    }else if(pathName === '/product'){
-        return res.end('this is a product page');
+    }else if(pathname === '/product'){
+      res.writeHead(200,{'Content-type':'text/html'});
+      //Here we get the id of project  eg: if we click the first item in the overview page then the id wiill be 0.
+      //that id we get from req.url eg:console.log(url.parase(req.url)) here you get the requested  query and pathname
+        const product = dataObj[query.id];
+      //Above we get an object and this object and template is send below
+      //the replace function will replace all the palceholder with the actual data using map function
+        const output = replaceTemplate(temProduct,product);
+        
+        //here we send backc the response to the client
+        return res.end(output);
 
         //Product
-    }else if(pathName == '/api'){
+    }else if(pathname == '/api'){
             //here inside the productData we get an array of object in json
             //so we need to tell browser that we are sending json
             res.writeHead(200,{
