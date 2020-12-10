@@ -1,6 +1,8 @@
 # Node-farm
 This project is foccused to brushup my backend skills without using an express framework. manually creting server and managing request and responses and doing error handleling
-Node farm is simple project which I did to learn node Js . In this project i did'nt use express. I manually created a webserver using createServer().
+Node farm is simple project which I did to learn node Js .
+In this project i am import url() by custom method.
+In this project i did'nt use express. I manually created a webserver using createServer().
 Here I created a custom data(data.json) file which contain an array of objects.
 In this project i learned to Cretae template and add place holder. And loop through data and replace the placeholder with actual content.
 This project is not yet completed . to be continued...!
